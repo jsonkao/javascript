@@ -1,3 +1,20 @@
+### Table of Contents
+
+| [JavaScript](#javascript) |
+|-----------------|
+| [Type Conversion](#type-conversion) |
+| [Comparsion](#comparison) |
+| [Symbols](#symbols) |
+| [Functions](#functions) |
+| [`this`](#this) |
+| [Objects](#objects) |
+
+| [Data Structures](#data-structures) |
+|-----------------|
+| [Using Arrays](#using-arrays) |
+
+---
+
 # JavaScript
 
 ## Type Conversion
@@ -48,3 +65,20 @@ Arrow method takes `this` from outer function, if any.
 - Object keys are Symbols or strings, or coerced into strings
 
 _Left off at http://javascript.info/object-toprimitive_
+
+---
+
+# Data Structures
+
+## Using Arrays
+
+For LinkedLists, Stacks, Queues, use native array methods:
+- Add to the end of an Array: `let newLength = fruits.push('Orange')`
+- Remove from the end of an Array: `let last = fruits.pop(); // remove Orange (from the end)`
+- Remove from the front of an Array `let first = fruits.shift(); // remove Apple from the front`
+
+More array methods:
+- Remove n items by index position: `let removedItem(s) = fruits.splice(pos, n); // this is how to remove an item`
+
+
+
