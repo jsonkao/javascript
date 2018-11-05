@@ -13,6 +13,8 @@
 |-----------------|
 | [Using Arrays](#using-arrays) |
 
+[**Random Notes**](#random-notes)
+
 ---
 
 # JavaScript
@@ -82,3 +84,6 @@ More array methods:
 
 
 
+# Random Notes
+
+**Garbage collection:** JS uses mark-and-sweep. From roots and branch out, marks all refs. Everything unmarked is removed.
