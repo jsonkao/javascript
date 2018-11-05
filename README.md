@@ -20,7 +20,8 @@
 | [Problems](#problems) |
 |-----------------|
 | [Strings](#strings) |
-| [Linked Lists](#linked-lists)
+| [Linked Lists](#linked-lists) |
+| [Graphs](#graphs) |
 
 [**Random Notes**](#random-notes)
 
@@ -95,6 +96,63 @@ More array methods:
 
 `new Set([ ... ])` stores unique values.
 
+## The Graph
+
+A graph is a set of vertices and a set of edges. Implementations are:
+1. each Vertex stores an adjacency list
+2. a map of { Vertex: adjacency list }
+
+### Topological sort
+
+Some ordering of vertices in a graph where if there is a path v_i to v_j, v_i appears before v_j in the ordering.
+
+1. We store an indegree on each vertex, which represents how many vertices point to it.
+2. We maintain a queue of vertices that have indegree = 0.
+3. For every vertex in the queue, decrement its neighbors' indegrees. Add neighbors
+
+```
+topsort() throws CycleFoundException {
+  Queue<Vertex> q = new Queue<Vertex>( );
+  int counter = 0;
+
+  for each Vertex v
+    if( v.indegree == 0 )
+      q.enqueue( v );
+
+  while( !q.isEmpty( ) ) {
+
+    Vertex v = q.dequeue( ); 
+    v.topNum = ++counter; // Assign next number
+
+    for each Vertex w adjacent to v
+      if( --w.indegree == 0 ) 
+        q.enqueue( w );
+  }
+  if ( counter != NUM_VERTICES )
+    throw new CycleFoundException( );
+}
+```
+
+### Djiktra's algorithm
+
+```
+Starting at a vertex s,
+for each Vertex v
+	v.dist = Infinity
+	v.known = false
+s.dist = 0
+while (there are unknown vertices) {
+	Vertex v = the unknown vertex with the smallest distance
+	v.known = true
+	for each adjacent Vertex w to v:
+		if (!w.known) {
+			d = distance from w to v
+			if (v.dist + d < w.dist)
+				w.dist = v.dist + d
+		}
+}
+```
+
 ---
 
 # Algorithms
@@ -110,7 +168,7 @@ Our hash function treats a string in some base >= the number of possible letters
 // String: 'doe '
 let code = c => c.charCodeAt(0);
 
-hash('doe') = code('d') * 128^2 + code('o;) * 128 + code('e') * 1
+hash('doe') = code('d') * 128^2 + code('o') * 128 + code('e') * 1
 hash('oe ') = (hash('doe') - code('d') * 128^2) * 128 + code(' ')
 ```
 
