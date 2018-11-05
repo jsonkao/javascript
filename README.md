@@ -43,4 +43,8 @@ If we separate “dot” and method (i.e. `(hi = user.hi)()` instead of `(user.h
 
 Arrow method takes `this` from outer function, if any.
 
+## Objects
+
+- Object keys are Symbols or strings, or coerced into strings
+
 _Left off at http://javascript.info/object-toprimitive_
