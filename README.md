@@ -12,6 +12,8 @@
 | [Data Structures](#data-structures) |
 |-----------------|
 | [Using Arrays](#using-arrays) |
+| [Heaps](#heaps) |
+| [Graphs](#the-graph) |
 
 | [Algorithms](#algorithms) |
 |-----------------|
@@ -152,6 +154,12 @@ while (there are unknown vertices) {
 		}
 }
 ```
+
+## Heaps
+
+Heaps are complete binary trees where the parent must always be (isMax ? > : <) than its children.
+- **insert:** Add to end of binary tree, then percolate up
+- **remove:** Put last element in root's spot, then percolate down. If max heap, switch with larger child. If min heap, switch with smaller child.
 
 ---
 
