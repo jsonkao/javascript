@@ -17,6 +17,7 @@
 
 | [Algorithms](#algorithms) |
 |-----------------|
+| [Sorting](#sorting) |
 | [Rubin-Karp substring search](#rubin-karp-substring-search) |
 
 | [Problems](#problems) |
@@ -164,6 +165,16 @@ Heaps are complete binary trees where the parent must always be (isMax ? > : <) 
 ---
 
 # Algorithms
+
+## Sorting
+
+**HeapSort:** Add elements of array into a max heap is `O(N)`. Swap last element of heap with deleteMax(), then last element down to a valid index (before deleteMax’s spot). We are adding the maxes from right to left, so we get an ascending array `O(NlogN)`. 
+
+**Insertion sort:** For p from 1 to N-1, make sure array from to 0 to p is sorted. Basically depends on the p-1 case. So basically bubbling the newly absorbed element leftwards.
+
+**Merge sort:** sort left, sort right, merge the two. Merging has three counters: left, right, current. Inc them as appropriate while comparing left and right to determine which one goes into current. It's a good idea to Insertion sort arrays with N ≤ 20.
+
+**Quicksort:** pivot = median(first, middle, last element). partition with counters i from 0 and j from last - 1 (backwards). Move i forward until element ≥ pivot. Move j back until element ≤ pivot. Switch i and j. Return quicksort(left) + pivot + quicksort(right).
 
 ## Rubin-Karp: search substring of length `s` in string of length `b`
 
