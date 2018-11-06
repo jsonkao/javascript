@@ -4,8 +4,8 @@
 |-----------------|
 | [Strings](#strings) |
 | [Linked Lists](#linked-lists) |
-| [Graphs](#graphs) |
-
+| [Trees](#trees) |
+ 
 ---
 
 ## Strings
@@ -35,5 +35,19 @@ Implementation:
 1. Have a Fast and Slow.
 2. When they collide, move Fast to LLHead.
 3. Move Slow and Fast at a rate of 1 step until they collide. Return the new collision point.
+
+## Trees
+
+### Create custom BinaryTree class with `getRandomNode()`
+
+1. At a node, it should have a probability of 1/N of being chosen. P(traversing left) = LEFT_SIZE * 1 / N. P(traversing right) = RIGHT_SIZE * 1 / N.
+2. So each node needs to store left size and right size.
+
+```
+leftSize, randomIndex(0..N);
+if index < leftSize: => left.getRandomNode;
+if index == leftSize: => this;
+else: => right.getRandomNode;
+```
 
 ---
