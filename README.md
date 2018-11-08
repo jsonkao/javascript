@@ -214,9 +214,11 @@ To set context, use `func.call(context, ...args)`. Or `func.apply(context, [args
 
 ## Comparison
 
-**String comparison:** compared in dictionary order (letter by letter) _by Unicode value_
-**When different types,** converted to Number (including “==”)
-=> 0 == false because Number(false) = 0. “===” does not type convert
+**String comparison:** compared in dictionary order (letter by letter) _by Unicode value_.
+
+**When different types compared with `<=`, `>=`,** converted to Number.
+
+Same with equality of **only strings, numbers, and booleans**. `null` coerces into `undefined`.
 
 ## Symbols
 
