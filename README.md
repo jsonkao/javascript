@@ -43,6 +43,53 @@
 
 ## Callbacks
 
+Some `loadScript` function can be asynchronous (not run now, but later). If we want to use its contents, we can add a callback, and then call `script.onload = () => callback(script)`. But easily turns into "callback hell".
+
+## Promise
+
+Promise:
+1. Takes code that takes time. The rest of our code waits for it, and wants its result once its ready.
+2. When the code produces the promised result, the Promise makes that result available to all the subscribed code.
+
+```
+let promise = new Promise(function(resolve, reject) {
+  resolve("done");
+
+  reject(new Error("…")); // ignored
+  setTimeout(() => resolve("…")); // ignored
+});
+
+promise.then(
+	function(result) {},
+	function(resolve) {}
+);
+
+```
+**Resolve** changes the Promise's internal state to fulfilled, and passes result to `.then`. **Reject** runs when promise rejected (`.catch(f) = .then(null, f);`).
+
+Handlers are always asynchronous: code after .then/.catch always end up running before subscribers because of JS's internal execution queue.
+
+### Promise chaining
+
+We can chain `.then`'s because a `.then` handler returns a Promise. When a `then` returns, it resolves that Promise with the return value. If `then` returns a Promise, we wait until it settles.
+
+## async/await
+
+`async` before a function makes it always return a function (`return 1` is `return Promise.resolve(1)`). `async` allows `await` to be used.
+
+`await` before a promise makes JS wait until that promise settles, then return result or throw error.
+```
+async function f1() {
+	let a = await p1; // wait 2 seconds
+	let b = await p2; // wait another 2 seconds
+	return a + b
+}
+
+async function f2() {
+	return await p1 + await p2; // wait 2 seconds total (running in parallel);
+}
+```
+
 ---
 
 # Advanced Functions
