@@ -9,6 +9,7 @@
 | [Closures](#closures) |
 | [`var`](#var) |
 | [Scheduling](#scheduling) |
+| [Throttling and debouncing](#throttling-and-debouncing) |
 | [Decorators](#decorators) |
 
 | [Basic JavaScript](#basic-javascript) |
@@ -128,6 +129,10 @@ The func's execution time consumes a part of the interval. If execution time > i
 ### `setTimeout(func, 0)`
 
 Zero-timeout scheduling is used to schedule the call "as soon as possible, but after the current code is complete". Even if it was `setTimeout(func, 100)` and the current code took > 100ms, func would still wait.
+
+## Throttling and Debouncing
+
+Throttling enforces a maximum number of times a function can be called over time. As in "execute this function at most once every 100 milliseconds." Debouncing enforces that a function not be called again until a certain amount of time has passed without it being called. As in "execute this function only if 100 milliseconds have passed without it being called."
 
 ## Decorators
 
