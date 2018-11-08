@@ -8,6 +8,8 @@
 | [Functions](#functions) |
 | [`this`](#this) |
 | [Objects](#objects) |
+| [Maps](#maps) |
+| [Sets](#sets) |
 | [Primitives](#primites) |
 | [Data Types](#data-types) |
 
@@ -71,11 +73,33 @@ If we separate “dot” and method (i.e. `(hi = user.hi)()` instead of `(user.h
 
 Arrow method takes `this` from outer function, if any.
 
-## Objects
+## Objects for storing keyed collections
 
 - Object keys are Symbols or strings, or coerced into strings
 
 _Left off at http://javascript.info/object-toprimitive_
+
+## Maps for storing keyed collections with keys of any type
+
+```
+new Map() creates the map
+map.set(key, value)
+map.get(key)
+map.has(key)
+map.delete(key)
+map.clear()
+map.size
+```
+
+## Sets for a collection of unique values
+
+```
+new Set(iterable) – creates the set, optionally from an array of values (any iterable will do).
+```
+
+Methods: add, delete, has, clear
+
+Also a size property.
 
 ## Primitives
 
@@ -94,15 +118,19 @@ alert(str.test); // error because object was destroyed, and test doesn't exist a
 - 52 of 64 bits can be used to store digits
 - Loss of precision: we can't easily express a fraction in binary. We could use `+(0.1.toFixed(2))`. And when large numbers need more than 52 bits, least significant digits are chopped off.
 
+**Strings*
+- Looped with `for..of`
+- Common methods: `includes`, `indexOf`,
 
 ---
 
 # Data Structures
 
-## Using Arrays
+## Using Arrays for storing ordered collections
 
 For LinkedLists, Stacks, Queues, use native array methods:
 - Add to the end of an Array: `let newLength = fruits.push('Orange')`
+- Add to the front of an Array: `fruits.unshift('Apple')`
 - Remove from the end of an Array: `let last = fruits.pop(); // remove Orange (from the end)`
 - Remove from the front of an Array `let first = fruits.shift(); // remove Apple from the front`
 
