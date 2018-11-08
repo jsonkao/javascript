@@ -1,6 +1,12 @@
 ### Table of Contents
 
-| [JavaScript](#javascript) |
+| [Advanced JavaScript](#advanced-javasciript) |
+|-----------------|
+| [Closures](#closures) |
+| [`var`](#var) |
+| [Scheduling](#scheduling) |
+
+| [Basic JavaScript](#basic-javascript) |
 |-----------------|
 | [Type Conversion](#type-conversion) |
 | [Comparsion](#comparison) |
@@ -10,7 +16,7 @@
 | [Objects](#objects) |
 | [Maps](#maps) |
 | [Sets](#sets) |
-| [Primitives](#primites) |
+| [Primitives](#primitives) |
 | [Data Types](#data-types) |
 
 | [Data Structures](#data-structures) |
@@ -28,7 +34,46 @@
 
 ---
 
-# JavaScript
+# Advanced JavaScript
+
+## Closures
+
+### Lexical Environment
+
+Every _running function_ (so each instance), code block, and script has an associated LE, which stores local variables and a reference to outer LE.
+
+Variables are first searched in the current LE, then outer, outer, etc. LE's don't store old variable values, so when accessing outer values, we use most recent values.
+
+**One call-one LE:** a new LE is created every time a function runs
+
+A closure is function that has `[[Environment]]`, so it remembers its outer variables and can access them.
+
+### `var`
+
+`var` has no block scope, only function-wide or global, so they are visible through blocks (including for loop declarations).
+
+## Scheduling
+
+### Recursive setTimeout
+
+We can call a `setTimeout` inside another, which will run something regularly. We can also use this to, for instance, request something every 5 seconds, but if the server is overloaded, increase it by a factor of 2 every time.
+
+**Recursive setTimeout guarantees a delay between the executions, setInterval does not.**
+Set Interval:
+![](https://raw.githubusercontent.com/iliakan/javascript-tutorial-en/master/1-js/06-advanced-functions/08-settimeout-setinterval/setinterval-interval.png)
+
+Set Timeout:
+![](https://raw.githubusercontent.com/iliakan/javascript-tutorial-en/master/1-js/06-advanced-functions/08-settimeout-setinterval/settimeout-interval.png)
+
+The func's execution time consumes a part of the interval. If execution time > interval, func runs again immediately.
+
+### `setTimeout(func, 0)`
+
+Zero-timeout scheduling is used to schedule the call "as soon as possible, but after the current code is complete". Even if it was `setTimeout(func, 100)` and the current code took > 100ms, func would still wait.
+
+---
+
+# Basic JavaScript
 
 ## Type Conversion
 
@@ -73,13 +118,17 @@ If we separate “dot” and method (i.e. `(hi = user.hi)()` instead of `(user.h
 
 Arrow method takes `this` from outer function, if any.
 
-## Objects for storing keyed collections
+## Objects
+
+_For storing keyed collections_
 
 - Object keys are Symbols or strings, or coerced into strings
 
 _Left off at http://javascript.info/object-toprimitive_
 
-## Maps for storing keyed collections with keys of any type
+## Maps
+
+_For storing keyed collections with keys of any type_
 
 ```
 new Map() creates the map
@@ -91,7 +140,9 @@ map.clear()
 map.size
 ```
 
-## Sets for a collection of unique values
+## Sets
+
+_For a collection of unique values_
 
 ```
 new Set(iterable) – creates the set, optionally from an array of values (any iterable will do).
@@ -126,7 +177,9 @@ alert(str.test); // error because object was destroyed, and test doesn't exist a
 
 # Data Structures
 
-## Using Arrays for storing ordered collections
+## Using Arrays
+
+_For storing ordered collections_
 
 For LinkedLists, Stacks, Queues, use native array methods:
 - Add to the end of an Array: `let newLength = fruits.push('Orange')`
