@@ -8,6 +8,8 @@
 | [Functions](#functions) |
 | [`this`](#this) |
 | [Objects](#objects) |
+| [Primitives](#primites) |
+| [Data Types](#data-types) |
 
 | [Data Structures](#data-structures) |
 |-----------------|
@@ -74,6 +76,24 @@ Arrow method takes `this` from outer function, if any.
 - Object keys are Symbols or strings, or coerced into strings
 
 _Left off at http://javascript.info/object-toprimitive_
+
+## Primitives
+
+When using object methods, primitives are wrapped in an object, the method is applied, and then the object is destroyed. This ensures primitives are lightweight, but we can still use object properties.
+```js
+let str = "Hello";
+
+str.test = 5; // creates a test property in the temporary wrapper object
+
+alert(str.test); // error because object was destroyed, and test doesn't exist anymore
+```
+
+## Data Types
+
+**Numbers**
+- 52 of 64 bits can be used to store digits
+- Loss of precision: we can't easily express a fraction in binary. We could use `+(0.1.toFixed(2))`. And when large numbers need more than 52 bits, least significant digits are chopped off.
+
 
 ---
 
