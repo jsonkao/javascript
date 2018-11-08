@@ -111,6 +111,13 @@ A closure is function that has `[[Environment]]`, so it remembers its outer vari
 
 `var` has no block scope, only function-wide or global, so they are visible through blocks (including for loop declarations).
 
+```
+(function () {
+	console.log(salary); // logs undefined because declaration is hoisted
+  var salary = "5000$";
+})();
+```
+
 ## Scheduling
 
 ### Recursive setTimeout
