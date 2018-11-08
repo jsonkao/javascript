@@ -195,8 +195,6 @@ slow = cachingDecorator(slow);
 
 To set context, use `func.call(context, ...args)`. Or `func.apply(context, [args])`.
 
-
-
 ---
 
 # Basic JavaScript
@@ -219,6 +217,8 @@ To set context, use `func.call(context, ...args)`. Or `func.apply(context, [args
 **When different types compared with `<=`, `>=`,** converted to Number.
 
 Same with equality of **only strings, numbers, and booleans**. `null` coerces into `undefined`.
+
+When something is `NaN`, any comparison intuitively yields false.
 
 ## Symbols
 
