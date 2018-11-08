@@ -1,10 +1,15 @@
 ### Table of Contents
 
-| [Advanced JavaScript](#advanced-javasciript) |
+| [Promises, async/await](#promises-async-await) |
+|-----------------|
+| [Callbacks](#callbacks) |
+
+| [Advanced Functions](#advanced-functions) |
 |-----------------|
 | [Closures](#closures) |
 | [`var`](#var) |
 | [Scheduling](#scheduling) |
+| [Decorators](#decorators) |
 
 | [Basic JavaScript](#basic-javascript) |
 |-----------------|
@@ -34,7 +39,13 @@
 
 ---
 
-# Advanced JavaScript
+# Promises, async/await
+
+## Callbacks
+
+---
+
+# Advanced Functions
 
 ## Closures
 
@@ -70,6 +81,27 @@ The func's execution time consumes a part of the interval. If execution time > i
 ### `setTimeout(func, 0)`
 
 Zero-timeout scheduling is used to schedule the call "as soon as possible, but after the current code is complete". Even if it was `setTimeout(func, 100)` and the current code took > 100ms, func would still wait.
+
+## Decorators
+
+Wraps a function, for instance, to cache the value.
+```
+function slow(x) { slow stuff; }
+
+function cachingDecorator(func) {
+	// cache logic...
+	return function(x) {
+		// cache logic...
+		return slow(x);
+	}
+}
+
+slow = cachingDecorator(slow);
+```
+
+To set context, use `func.call(context, ...args)`. Or `func.apply(context, [args])`.
+
+
 
 ---
 
