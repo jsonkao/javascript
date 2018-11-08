@@ -134,6 +134,48 @@ Zero-timeout scheduling is used to schedule the call "as soon as possible, but a
 
 Throttling enforces a maximum number of times a function can be called over time. As in "execute this function at most once every 100 milliseconds." Debouncing enforces that a function not be called again until a certain amount of time has passed without it being called. As in "execute this function only if 100 milliseconds have passed without it being called."
 
+```js
+const debounce = (fn, delay) => {
+	let timerId;
+	return function(...args) {
+		clearInterval(timerId);
+		timerId = setTimeout(() => fn.apply(this, args), delay);
+	};
+};
+
+const throttle = (fn, delay) => {
+	let inThrottle = false;
+	return function() {
+		if (!inThrottle) {
+			fn.apply(this, arguments);
+			inThrottle = true;
+			setTimeout(() => inThrottle = false, delay);
+		}
+	}
+};
+
+function throttle2(fn, wait) {
+  let isThrottled = false,
+    lastArgs = null;
+  return function wrapper() {
+    if (isThrottled) {
+      lastArgs = arguments;
+    } else {
+      fn.apply(this, arguments);
+      isThrottled = setTimeout( () => {
+        isThrottled = false;
+        if (lastArgs) {
+          wrapper.apply(this, lastArgs);
+          lastArgs = null;
+        }
+      }, wait);
+    }
+  }
+}
+		
+	f() -> wait for a period of time before it can be called again
+```
+
 ## Decorators
 
 Wraps a function, for instance, to cache the value.
